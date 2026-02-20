@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    {% if strength == "Strong" %}
+        <h2 class="strong">Strong Password 🔐</h2>
+    {% elif strength == "Medium" %}
+        <h2 class="medium">Medium Password ⚠</h2>
+    {% else %}
+        <h2 class="weak">Weak Password ❌</h2>
+    {% endif %}
+
+    <p>Score: {{ score }}/100</p>
+
+    {% if issues %}
+        <h4>Improve by:</h4>
+        <ul>
+            {% for issue in issues %}
+                <li>{{ issue }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <a href="/">Check Another Password</a>
+
+</div>
+
+</body>
+</html>
